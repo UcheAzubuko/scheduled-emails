@@ -6,18 +6,20 @@ const nodemailer = require('nodemailer');
 app = express();
 
 let mailOptions = {
-  from: 'ucheazu97@gmail.com',
-  to: 'azubukouche@yahoo.com',
+  from: '<FROM_EMAIL_ADDRESS>',
+  to: '<TO_EMAIL_ADDRESS>',
   subject: 'Email from Node-App: A Test Message!',
   text: 'Some content to send',
+  html: '<b>The html content</b>',
 };
 
 // Mail transport configuration
 let transporter = nodemailer.createTransport({
   service: 'gmail',
+
   auth: {
-    user: 'ucheazu97@gmail.com',
-    pass: 'fernando_9',
+    user: '<FROM_EMAIL_ADDRESS>',
+    pass: '<FROM_EMAIL_PASSWORD>',
   },
   tls: {
     rejectUnauthorized: false,
@@ -35,4 +37,4 @@ cron.schedule('* * * * *', function () {
   });
 });
 
-app.listen(3007);
+app.listen(3000);
